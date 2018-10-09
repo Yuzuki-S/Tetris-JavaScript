@@ -5,7 +5,7 @@ context.scale(20,20)
 
 function arenaSweep() {
     let rowCount = 1;
-    outer: for(let y = arena.length - 1; y < 0; --y){
+    outer: for(let y = arena.length - 1; y > 0; --y){
         for (let x = 0; x < arena[y].length; ++x) {
             if (arena[y][x] === 0) {
                 continue outer;
@@ -43,7 +43,7 @@ function createMatrix(w,h){
 }
 
 function createPiece(type) {
-    if(type == 'T') {
+    if(type === 'T') {
         return [
             [0,0,0],
             [1,1,1],
@@ -233,9 +233,9 @@ document.addEventListener('keydown', event => {
     } else if (event.keyCode === 40){
         playerDrop()
     } else if (event.keyCode === 81) {
-        playerRoate(-1);
+        playerRoate(-1); // q
     } else if (event.keyCode === 87) {
-        playerRoate(1);
+        playerRoate(1); //w
     }
 })
 
