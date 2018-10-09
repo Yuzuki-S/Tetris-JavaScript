@@ -50,8 +50,10 @@ function createPiece(type) {
             [0,1,0]
         ];
     } else if (type === 'O') {
-       return [2,2],
-              [2,2]
+       return [ 
+            [2,2],
+            [2,2]
+       ]
     } else if (type === 'L'){
         return [
         [0,3,0],
