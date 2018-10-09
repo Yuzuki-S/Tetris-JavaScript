@@ -47,66 +47,66 @@ function createPiece(type) {
         return [
             [0,0,0],
             [1,1,1],
-            [0,1,0]
+            [0,1,0],
         ];
     } else if (type === 'O') {
        return [ 
             [2,2],
-            [2,2]
+            [2,2],
        ]
     } else if (type === 'L'){
         return [
-        [0,3,0],
-        [0,3,0],
-        [0,3,3]
-    ]
+            [0,3,0],
+            [0,3,0],
+            [0,3,3],
+        ]
     }  else if (type === 'J'){
         return [
-        [0,4,0],
-        [0,4,0],
-        [4,4,0]
-    ]
+            [0,4,0],
+            [0,4,0],
+            [4,4,0],
+        ]
     }   else if (type === 'I'){
         return [
-        [0,5,0,0],
-        [0,5,0,0],
-        [0,5,0,0],
-        [0,5,0,0]
-    ]
+            [0,5,0,0],
+            [0,5,0,0],
+            [0,5,0,0],
+            [0,5,0,0],
+        ]
     }   else if (type === 'S'){
         return [
-        [0,6,6],
-        [6,6,0],
-        [0,0,0]
-    ]
+            [0,6,6],
+            [6,6,0],
+            [0,0,0],
+        ]
     } else if (type === 'Z'){
         return [
-        [7,7,0],
-        [0,7,7],
-        [0,0,0]
-    ]
+            [7,7,0],
+            [0,7,7],
+            [0,0,0],
+        ]
     } 
 }
 
 function draw () {
     context.fillStyle = '#000';
-    context.fillRect(0,0, canvas.width, canvas.height);
+    context.fillRect(0,0, canvas.width, canvas.height); //fillReact(x(pos),y(pos),width,height)
     drawMatrix(arena, {x: 0, y: 0})
     drawMatrix(player.matrix, player.pos);
 }
 
 
-function drawMatrix(matrix, offset){
-matrix.forEach((row, y) => {
-    row.forEach((value, x) => {
-       if(value !==0){
-           context.fillStyle =colors[value];
-           context.fillRect(x + offset.x,
-                            y + offset.y,
-                            1,1)
-       } 
+function drawMatrix(matrix, offset) {
+    matrix.forEach((row, y) => {
+        row.forEach((value, x) => {
+            if(value !==0){
+                context.fillStyle = colors[value];
+                context.fillRect(x + offset.x,
+                                 y + offset.y,
+                                 1,1)
+        } 
+        })
     })
-})
 }
 
 function merge(arena, player) {
@@ -191,7 +191,7 @@ let dropInterval = 1000;
 
 let lastTime = 0;
 function update(time=0) {
-    const deltaTime = time- lastTime;
+    const deltaTime = time- lastTime; // delta time is updating scenery based on the elapsed time since the game last updated.
     lastTime = time;
  
     dropCounter += deltaTime;
@@ -234,7 +234,7 @@ document.addEventListener('keydown', event => {
         playerDrop()
     } else if (event.keyCode === 81) {
         playerRoate(-1);
-    } else if (event.keyCode === 81) {
+    } else if (event.keyCode === 87) {
         playerRoate(1);
     }
 })
